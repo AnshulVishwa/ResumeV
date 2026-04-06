@@ -1,62 +1,31 @@
-@import "tailwindcss";
+@import "tailwindcss"; /* For Tailwind v4 */
 
-.container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 20px; /* Give it 20px all around */
-  background-color: #212121;
+* {
+  box-sizing: border-box;
 }
 
 .resumePage {
-  width: 100%;
-  max-width: 794px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 794px;
+  height: 1123px; /* MUST BE FIXED */
+  overflow: hidden; /* Hide the extra content so we can detect it */
+  padding: 40px;
   box-sizing: border-box;
-  @media (min-width: 794px) {
-    aspect-ratio: 1/1.414;
-  }
-}
-
-a {
-  color: blue;
-}
-
-input,
-button {
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  outline: none;
-  cursor: pointer;
+  background-color: white;
+  position: relative;
 }
 
 @media print {
-  /* Prevent sections from breaking in the middle */
-  section,
-  li,
-  .resumePage > div {
-    page-break-inside: avoid;
-    break-inside: avoid;
+  .resumePage {
+    width: 210mm !important;
+    height: 297mm !important;
+    /* margin: 0 !important;
+    padding: 0 !important; */
+    box-shadow: none !important;
+    page-break-after: always;
   }
 
-  /* Hide those 'Add' buttons and 'X' delete marks in the PDF */
   button,
   .text-red-500 {
-    display: none !important;
-  }
-
-  /* Ensure the container doesn't add extra margins */
-  .container {
-    padding: 0 !important;
-    background: none !important;
-  }
-
-  .resumePage {
-    box-shadow: none !important;
-    margin: 0 !important;
-    height: 296mm; /* Full A4 Height */
-    width: 209mm; /* Full A4 Width */
+    display: none !important; /* Hide UI elements */
   }
 }
